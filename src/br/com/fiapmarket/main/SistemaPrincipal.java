@@ -1,45 +1,55 @@
 package br.com.fiapmarket.main;
 
-import br.com.fiapmarket.model.Usuario;
+import br.com.fiapmarket.model.Produto;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("--- Sistema FiapMarket ---\n");
+        System.out.println("--- Sistema FIAPMarket ---\n");
 
-        // INSTANCIAÇÃO COM CONSTRUTOR
-        Usuario usuario1 = new Usuario(
-                "Ana Silva",
-                25,
-                "ana@email.com"
+        // TESTE 1: CADASTRO CORRETO
+        Produto produto1 = new Produto(
+                "Notebook Gamer",
+                4500.00
         );
 
-        Usuario usuario2 = new Usuario(
-                "Carlos Souza",
-                16,
-                "carlos@email.com"
+        System.out.println();
+
+        Produto produto2 = new Produto(
+                "Mouse Gamer",
+                250.00
         );
 
-        // EXIBIÇÃO INICIAL
-        usuario1.exibirDados();
-        usuario2.exibirDados();
+        System.out.println();
 
-        // ACESSO VIA GETTERS
-        System.out.println("Nome usuario1: " + usuario1.getNome());
-        System.out.println("Idade usuario2: " + usuario2.getIdade());
+        // EXIBIÇÃO VIA GETTERS
+        System.out.println(
+                "Produto: " + produto1.getNome()
+        );
 
-        // USO DE MÉTODO DE COMPORTAMENTO
-        usuario1.atualizarEmail("novoemail@fiap.com");
-        usuario2.atualizarEmail("emailinvalido");
+        System.out.println(
+                "Preço: R$ " + produto1.getPreco()
+        );
 
-        // EXIBIÇÃO FINAL
-        System.out.println("\n--- Atualizado ---\n");
+        System.out.println();
 
-        usuario1.exibirDados();
-        usuario2.exibirDados();
+        // TESTE 2: ALTERAÇÃO DE PREÇO
+        produto1.atualizarPreco(3999.99);
 
-        // TESTE DE SEGURANÇA
-        // usuario1.email = "hack@hack.com"; // bloqueado pelo private
+        System.out.println();
+
+        // TESTE 3: VALIDAÇÃO
+        produto2.atualizarPreco(-50);
+
+        System.out.println();
+
+        // TESTE 4: TENTATIVA DE BURLAR O SISTEMA
+        // Produto produtoFantasma = new Produto();
+        // ❌ ERRO DE COMPILAÇÃO
+        // O construtor vazio não existe mais.
+
+        // produto1.preco = 1;
+        // ❌ bloqueado pelo private
     }
 }
