@@ -6,35 +6,40 @@ public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        // OBJETO 1
-        Usuario usuario1 = new Usuario();
-        usuario1.nome = "Ana Silva";
-        usuario1.idade = 25;
-        usuario1.email = "ana@email.com";
+        System.out.println("--- Sistema FiapMarket ---\n");
 
-        // OBJETO 2
-        Usuario usuario2 = new Usuario();
-        usuario2.nome = "Carlos Souza";
-        usuario2.idade = 16;
-        usuario2.email = "carlos@email.com";
+        // INSTANCIAÇÃO COM CONSTRUTOR
+        Usuario usuario1 = new Usuario(
+                "Ana Silva",
+                25,
+                "ana@email.com"
+        );
 
-        System.out.println("--- Sistema FiapMarket ---");
+        Usuario usuario2 = new Usuario(
+                "Carlos Souza",
+                16,
+                "carlos@email.com"
+        );
 
-        // EXIBIÇÃO
+        // EXIBIÇÃO INICIAL
         usuario1.exibirDados();
         usuario2.exibirDados();
 
-        // TESTE DE MÉTODOS COM VALIDAÇÃO
+        // ACESSO VIA GETTERS
+        System.out.println("Nome usuario1: " + usuario1.getNome());
+        System.out.println("Idade usuario2: " + usuario2.getIdade());
+
+        // USO DE MÉTODO DE COMPORTAMENTO
         usuario1.atualizarEmail("novoemail@fiap.com");
-        usuario2.atualizarEmail("emailinvalido"); // erro
+        usuario2.atualizarEmail("emailinvalido");
 
-        usuario1.atualizarIdade(30);
-        usuario2.atualizarIdade(-5); // erro
-
-        // EXIBIR NOVAMENTE
-        System.out.println("\n--- Atualizado ---");
+        // EXIBIÇÃO FINAL
+        System.out.println("\n--- Atualizado ---\n");
 
         usuario1.exibirDados();
         usuario2.exibirDados();
+
+        // TESTE DE SEGURANÇA
+        // usuario1.email = "hack@hack.com"; // bloqueado pelo private
     }
 }
