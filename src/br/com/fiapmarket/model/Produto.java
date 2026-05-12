@@ -8,7 +8,6 @@ public class Produto {
     // CONSTRUTOR PADRÃO
     public Produto() {
 
-        // CHAMANDO O CONSTRUTOR PRINCIPAL
         this("Produto sem nome", 1.0);
 
         System.out.println("🛒 Produto padrão criado.");
@@ -21,10 +20,8 @@ public class Produto {
         this.setPreco(preco);
 
         System.out.println(
-                "✅ Produto criado: "
+                "✅ Produto cadastrado: "
                         + this.nome
-                        + " | R$ "
-                        + this.preco
         );
     }
 
@@ -43,7 +40,7 @@ public class Produto {
     public void atualizarPreco(double novoPreco) {
 
         System.out.println(
-                "🔄 Atualizando preço..."
+                "🔄 Atualizando preço do produto..."
         );
 
         this.setPreco(novoPreco);
@@ -59,7 +56,9 @@ public class Produto {
 
         } else {
 
-            System.out.println("❌ Nome inválido!");
+            System.out.println(
+                    "❌ Nome do produto inválido!"
+            );
         }
     }
 
@@ -71,7 +70,9 @@ public class Produto {
 
         } else {
 
-            System.out.println("❌ Preço inválido!");
+            System.out.println(
+                    "❌ Preço inválido!"
+            );
         }
     }
 }

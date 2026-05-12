@@ -1,55 +1,48 @@
 package br.com.fiapmarket.main;
 
+import br.com.fiapmarket.model.Usuario;
 import br.com.fiapmarket.model.Produto;
+import br.com.fiapmarket.model.Pedido;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("--- Sistema FIAPMarket ---\n");
+        System.out.println(
+                "--- FIAPMARKET: Inicializando Sistema ---"
+        );
 
-        // TESTE 1: CADASTRO CORRETO
+        // 1. CRIANDO OS OBJETOS INDEPENDENTES
+
+        Usuario cliente1 = new Usuario(
+                "Ana Silva",
+                100.0
+        );
+
         Produto produto1 = new Produto(
                 "Notebook Gamer",
-                4500.00
+                4500.0
         );
 
-        System.out.println();
+        // 2. CRIANDO O PEDIDO (ASSOCIAÇÃO)
 
-        Produto produto2 = new Produto(
-                "Mouse Gamer",
-                250.00
+        Pedido pedido1 = new Pedido(
+                "Avenida Paulista, 1000",
+                cliente1,
+                produto1
         );
 
-        System.out.println();
+        // 3. TESTANDO A ASSOCIAÇÃO
 
-        // EXIBIÇÃO VIA GETTERS
+        pedido1.exibirResumo();
+
+        // 4. PROVA DA PASSAGEM POR REFERÊNCIA
+
+        cliente1.adicionarSaldo(500.0);
+
         System.out.println(
-                "Produto: " + produto1.getNome()
+                "Saldo consultado ATRAVÉS do pedido: R$ "
+                        + pedido1.getCliente().getSaldo()
         );
-
-        System.out.println(
-                "Preço: R$ " + produto1.getPreco()
-        );
-
-        System.out.println();
-
-        // TESTE 2: ALTERAÇÃO DE PREÇO
-        produto1.atualizarPreco(3999.99);
-
-        System.out.println();
-
-        // TESTE 3: VALIDAÇÃO
-        produto2.atualizarPreco(-50);
-
-        System.out.println();
-
-        // TESTE 4: TENTATIVA DE BURLAR O SISTEMA
-        // Produto produtoFantasma = new Produto();
-        // ❌ ERRO DE COMPILAÇÃO
-        // O construtor vazio não existe mais.
-
-        // produto1.preco = 1;
-        // ❌ bloqueado pelo private
     }
 }
