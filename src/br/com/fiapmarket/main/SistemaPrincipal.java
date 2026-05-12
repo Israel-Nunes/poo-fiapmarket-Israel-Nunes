@@ -1,48 +1,65 @@
 package br.com.fiapmarket.main;
 
-import br.com.fiapmarket.model.Usuario;
-import br.com.fiapmarket.model.Produto;
-import br.com.fiapmarket.model.Pedido;
+import br.com.fiapmarket.model.Eletronico;
+import br.com.fiapmarket.model.Alimento;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
         System.out.println(
-                "--- FIAPMARKET: Inicializando Sistema ---"
+                "--- FIAPMARKET: Teste de Produtos ---"
         );
 
-        // 1. CRIANDO OS OBJETOS INDEPENDENTES
+        // 1. INSTANCIANDO OBJETOS ESPECÍFICOS
 
-        Usuario cliente1 = new Usuario(
-                "Ana Silva",
-                100.0
-        );
-
-        Produto produto1 = new Produto(
+        Eletronico notebook = new Eletronico(
                 "Notebook Gamer",
-                4500.0
+                4500.0,
+                24
         );
 
-        // 2. CRIANDO O PEDIDO (ASSOCIAÇÃO)
-
-        Pedido pedido1 = new Pedido(
-                "Avenida Paulista, 1000",
-                cliente1,
-                produto1
+        Alimento arroz = new Alimento(
+                "Arroz 5kg",
+                29.90,
+                false
         );
 
-        // 3. TESTANDO A ASSOCIAÇÃO
-
-        pedido1.exibirResumo();
-
-        // 4. PROVA DA PASSAGEM POR REFERÊNCIA
-
-        cliente1.adicionarSaldo(500.0);
+        // 2. TESTE DA HERANÇA
 
         System.out.println(
-                "Saldo consultado ATRAVÉS do pedido: R$ "
-                        + pedido1.getCliente().getSaldo()
+                "\nEletrônico: "
+                        + notebook.getNome()
+                        + " | Preço: R$ "
+                        + notebook.getPreco()
         );
+
+        System.out.println(
+                "Garantia: "
+                        + notebook.getGarantiaMeses()
+                        + " meses"
+        );
+
+        System.out.println(
+                "\nAlimento: "
+                        + arroz.getNome()
+                        + " | Preço: R$ "
+                        + arroz.getPreco()
+        );
+
+        // TESTE EXCLUSIVO DA FILHA
+
+        if (arroz.isPerecivel()) {
+
+            System.out.println(
+                    "⚠ Produto perecível!"
+            );
+
+        } else {
+
+            System.out.println(
+                    "✅ Produto não perecível."
+            );
+        }
     }
 }

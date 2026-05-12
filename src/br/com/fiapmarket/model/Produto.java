@@ -40,7 +40,7 @@ public class Produto {
     public void atualizarPreco(double novoPreco) {
 
         System.out.println(
-                "🔄 Atualizando preço do produto..."
+                "🔄 Atualizando preço..."
         );
 
         this.setPreco(novoPreco);
@@ -57,7 +57,7 @@ public class Produto {
         } else {
 
             System.out.println(
-                    "❌ Nome do produto inválido!"
+                    "❌ Nome inválido!"
             );
         }
     }
