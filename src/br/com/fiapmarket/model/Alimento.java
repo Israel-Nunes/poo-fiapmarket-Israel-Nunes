@@ -1,6 +1,8 @@
 package br.com.fiapmarket.model;
 
-public class Alimento extends Produto {
+public class Alimento
+        extends Produto
+        implements Promocional {
 
     private boolean perecivel;
 
@@ -13,7 +15,8 @@ public class Alimento extends Produto {
 
         super(nome, preco, peso);
 
-        this.perecivel = perecivel;
+        this.perecivel =
+                perecivel;
     }
 
     public boolean isPerecivel() {
@@ -21,10 +24,7 @@ public class Alimento extends Produto {
         return this.perecivel;
     }
 
-    // IMPLEMENTAÇÃO OBRIGATÓRIA
-
     @Override
-
     public void exibirCategoria() {
 
         System.out.println(
@@ -32,17 +32,55 @@ public class Alimento extends Produto {
         );
     }
 
-    // POLIMORFISMO
-
     @Override
-
     public String calcularFrete() {
 
         double valorFrete =
                 this.getPeso() * 5.0;
 
-        return
-                "Frete alimento: R$ "
-                        + valorFrete;
+        return String.format(
+                "Frete alimento: R$ %.2f",
+                valorFrete
+        );
+    }
+
+    // IMPLEMENTAÇÃO DA INTERFACE
+
+    @Override
+    public void aplicarDesconto(
+            double percentual
+    ) {
+
+        if (percentual <
+                Promocional.DESCONTO_MINIMO
+                ||
+                percentual >
+                        Promocional.DESCONTO_MAXIMO) {
+
+            System.out.println(
+                    " Desconto inválido!"
+            );
+
+            return;
+        }
+
+        double desconto =
+                this.getPreco()
+                        * percentual;
+
+        double novoPreco =
+                this.getPreco()
+                        - desconto;
+
+        System.out.println(
+                " Desconto aplicado no alimento!"
+        );
+
+        System.out.println(
+        String.format(
+                "Novo preço: R$ %.2f",
+                novoPreco
+        )
+);
     }
 }

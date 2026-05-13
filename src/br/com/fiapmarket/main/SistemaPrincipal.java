@@ -7,29 +7,14 @@ public class SistemaPrincipal {
     public static void main(String[] args) {
 
         System.out.println(
-                "=== FIAPMARKET: Teste de Classes Abstratas ==="
+                "=== FIAPMARKET: TESTE DE INTERFACES ==="
         );
 
         System.out.println();
 
-        // TESTE 1
-        // NÃO PODE INSTANCIAR ABSTRACT
+        // OBJETOS DIFERENTES
 
-        // Produto produto =
-        //     new Produto(
-        //         "Genérico",
-        //         10.0,
-        //         1.0
-        // );
-
-        // ❌ ERRO:
-        // Produto is abstract;
-        // cannot be instantiated
-
-        // TESTE 2
-        // OBJETOS CONCRETOS
-
-        Produto notebook =
+        Eletronico notebook =
                 new Eletronico(
                         "Notebook Gamer",
                         4500.0,
@@ -37,67 +22,65 @@ public class SistemaPrincipal {
                         24
                 );
 
-        Produto arroz =
+        Alimento arroz =
                 new Alimento(
                         "Arroz 5kg",
                         29.90,
                         5.0,
-                        false
+                        true
                 );
 
-        // TESTE 3
-        // MÉTODO ABSTRATO IMPLEMENTADO
+        // POLIMORFISMO DE INTERFACE
 
-        System.out.println(
-                "Categorias:"
-        );
+        Promocional[] promocionais =
+                new Promocional[] {
 
-        notebook.exibirCategoria();
-
-        arroz.exibirCategoria();
-
-        System.out.println();
-
-        System.out.println(
-                "=== POLIMORFISMO COM ABSTRACT ==="
-        );
-
-        Produto[] produtos =
-                new Produto[] {
-
-                        new Eletronico(
-                                "Smartphone",
-                                2500.0,
-                                0.8,
-                                12
-                        ),
-
-                        new Alimento(
-                                "Feijão 1kg",
-                                8.50,
-                                1.0,
-                                true
-                        ),
-
-                        new Eletronico(
-                                "Monitor Gamer",
-                                1800.0,
-                                4.5,
-                                24
-                        )
+                        notebook,
+                        arroz
                 };
 
-        for (Produto produto : produtos) {
+        System.out.println(
+                "=== APLICANDO PROMOÇÕES ==="
+        );
 
-            produto.exibirCategoria();
+        for (Promocional p
+                : promocionais) {
 
-            System.out.println(
-                    produto.calcularFrete()
-            );
+            p.aplicarDesconto(0.10);
 
             System.out.println(
                     "---"
             );
         }
+
+        System.out.println();
+
+        System.out.println(
+                "=== MÚLTIPLOS TIPOS ==="
+        );
+
+        System.out.println(
+                "Notebook é Produto? "
+                        +
+                        (notebook instanceof Produto)
+        );
+
+        System.out.println(
+                "Notebook é Promocional? "
+                        +
+                        (notebook instanceof Promocional)
+        );
+
+        System.out.println(
+                "Arroz é Produto? "
+                        +
+                        (arroz instanceof Produto)
+        );
+
+        System.out.println(
+                "Arroz é Promocional? "
+                        +
+                        (arroz instanceof Promocional)
+        );
     }
 }
