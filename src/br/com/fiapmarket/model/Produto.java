@@ -4,25 +4,18 @@ public class Produto {
 
     private String nome;
     private double preco;
+    private double peso;
 
-    // CONSTRUTOR PADRÃO
-    public Produto() {
-
-        this("Produto sem nome", 1.0);
-
-        System.out.println("🛒 Produto padrão criado.");
-    }
-
-    // CONSTRUTOR CUSTOMIZADO
-    public Produto(String nome, double preco) {
+    // CONSTRUTOR
+    public Produto(
+            String nome,
+            double preco,
+            double peso
+    ) {
 
         this.setNome(nome);
         this.setPreco(preco);
-
-        System.out.println(
-                "✅ Produto cadastrado: "
-                        + this.nome
-        );
+        this.setPeso(peso);
     }
 
     // GETTERS
@@ -35,15 +28,15 @@ public class Produto {
         return this.preco;
     }
 
-    // COMPORTAMENTO
+    public double getPeso() {
+        return this.peso;
+    }
 
-    public void atualizarPreco(double novoPreco) {
+    // MÉTODO POLIMÓRFICO (CONTRATO)
 
-        System.out.println(
-                "🔄 Atualizando preço..."
-        );
+    public String calcularFrete() {
 
-        this.setPreco(novoPreco);
+        return "Frete não definido para produto genérico.";
     }
 
     // SETTERS PRIVADOS
@@ -72,6 +65,20 @@ public class Produto {
 
             System.out.println(
                     "❌ Preço inválido!"
+            );
+        }
+    }
+
+    private void setPeso(double peso) {
+
+        if (peso > 0) {
+
+            this.peso = peso;
+
+        } else {
+
+            System.out.println(
+                    "❌ Peso inválido!"
             );
         }
     }

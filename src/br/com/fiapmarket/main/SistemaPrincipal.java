@@ -1,64 +1,59 @@
 package br.com.fiapmarket.main;
 
-import br.com.fiapmarket.model.Eletronico;
-import br.com.fiapmarket.model.Alimento;
+import br.com.fiapmarket.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println(
-                "--- FIAPMARKET: Teste de Produtos ---"
+        // LISTA DA SUPERCLASSE
+        List<Produto> produtos =
+                new ArrayList<>();
+
+        // OBJETOS DIFERENTES
+
+        produtos.add(
+                new Eletronico(
+                        "Notebook Gamer",
+                        4500.0,
+                        2.5,
+                        24
+                )
         );
 
-        // 1. INSTANCIANDO OBJETOS ESPECÍFICOS
-
-        Eletronico notebook = new Eletronico(
-                "Notebook Gamer",
-                4500.0,
-                24
-        );
-
-        Alimento arroz = new Alimento(
-                "Arroz 5kg",
-                29.90,
-                false
-        );
-
-        // 2. TESTE DA HERANÇA
-
-        System.out.println(
-                "\nEletrônico: "
-                        + notebook.getNome()
-                        + " | Preço: R$ "
-                        + notebook.getPreco()
+        produtos.add(
+                new Alimento(
+                        "Arroz 5kg",
+                        29.90,
+                        5.0,
+                        false
+                )
         );
 
         System.out.println(
-                "Garantia: "
-                        + notebook.getGarantiaMeses()
-                        + " meses"
+                "--- 🚚 RELATÓRIO DE FRETE ---"
         );
 
-        System.out.println(
-                "\nAlimento: "
-                        + arroz.getNome()
-                        + " | Preço: R$ "
-                        + arroz.getPreco()
-        );
+        // POLIMORFISMO
 
-        // TESTE EXCLUSIVO DA FILHA
-
-        if (arroz.isPerecivel()) {
+        for (Produto produto : produtos) {
 
             System.out.println(
-                    "⚠ Produto perecível!"
+                    "\nProduto: "
+                            + produto.getNome()
             );
 
-        } else {
+            // O JAVA DECIDE QUAL MÉTODO USAR
 
             System.out.println(
-                    "✅ Produto não perecível."
+                    produto.calcularFrete()
+            );
+
+            System.out.println(
+                    "-------------------------"
             );
         }
     }

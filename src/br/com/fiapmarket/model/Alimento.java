@@ -2,25 +2,35 @@ package br.com.fiapmarket.model;
 
 public class Alimento extends Produto {
 
-    // ATRIBUTO EXCLUSIVO
     private boolean perecivel;
 
-    // CONSTRUTOR
     public Alimento(
             String nome,
             double preco,
+            double peso,
             boolean perecivel
     ) {
 
-        // CHAMA A MÃE
-        super(nome, preco);
+        super(nome, preco, peso);
 
         this.perecivel = perecivel;
     }
 
-    // GETTER
-
     public boolean isPerecivel() {
         return this.perecivel;
+    }
+
+    // POLIMORFISMO
+
+    @Override
+
+    public String calcularFrete() {
+
+        double valorFrete =
+                this.getPeso() * 5.0;
+
+        return
+                "Frete alimento: R$ "
+                        + valorFrete;
     }
 }

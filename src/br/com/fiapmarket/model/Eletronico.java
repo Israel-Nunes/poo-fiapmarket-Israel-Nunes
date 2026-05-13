@@ -1,44 +1,36 @@
 package br.com.fiapmarket.model;
 
-// HERANÇA
 public class Eletronico extends Produto {
 
-    // ATRIBUTO EXCLUSIVO
     private int garantiaMeses;
 
-    // CONSTRUTOR
     public Eletronico(
             String nome,
             double preco,
+            double peso,
             int garantiaMeses
     ) {
 
-        // CHAMA O CONSTRUTOR DA MÃE
-        super(nome, preco);
+        super(nome, preco, peso);
 
-        // RESOLVE O QUE É DA FILHA
-        this.setGarantiaMeses(garantiaMeses);
+        this.garantiaMeses = garantiaMeses;
     }
-
-    // GETTER
 
     public int getGarantiaMeses() {
         return this.garantiaMeses;
     }
 
-    // SETTER PRIVADO
+    // POLIMORFISMO
 
-    private void setGarantiaMeses(int garantiaMeses) {
+    @Override
 
-        if (garantiaMeses >= 0) {
+    public String calcularFrete() {
 
-            this.garantiaMeses = garantiaMeses;
+        double valorFrete =
+                this.getPeso() * 12.0;
 
-        } else {
-
-            System.out.println(
-                    "❌ Garantia inválida!"
-            );
-        }
+        return
+                "Frete eletrônico: R$ "
+                        + valorFrete;
     }
 }
