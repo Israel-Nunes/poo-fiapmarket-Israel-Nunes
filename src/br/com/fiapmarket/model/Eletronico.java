@@ -13,11 +13,24 @@ public class Eletronico extends Produto {
 
         super(nome, preco, peso);
 
-        this.garantiaMeses = garantiaMeses;
+        this.garantiaMeses =
+                garantiaMeses;
     }
 
     public int getGarantiaMeses() {
+
         return this.garantiaMeses;
+    }
+
+    // IMPLEMENTAÇÃO OBRIGATÓRIA
+
+    @Override
+
+    public void exibirCategoria() {
+
+        System.out.println(
+                "Categoria: Eletrônico"
+        );
     }
 
     // POLIMORFISMO

@@ -2,58 +2,101 @@ package br.com.fiapmarket.main;
 
 import br.com.fiapmarket.model.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        // LISTA DA SUPERCLASSE
-        List<Produto> produtos =
-                new ArrayList<>();
+        System.out.println(
+                "=== FIAPMARKET: Teste de Classes Abstratas ==="
+        );
 
-        // OBJETOS DIFERENTES
+        System.out.println();
 
-        produtos.add(
+        // TESTE 1
+        // NÃO PODE INSTANCIAR ABSTRACT
+
+        // Produto produto =
+        //     new Produto(
+        //         "Genérico",
+        //         10.0,
+        //         1.0
+        // );
+
+        // ❌ ERRO:
+        // Produto is abstract;
+        // cannot be instantiated
+
+        // TESTE 2
+        // OBJETOS CONCRETOS
+
+        Produto notebook =
                 new Eletronico(
                         "Notebook Gamer",
                         4500.0,
                         2.5,
                         24
-                )
-        );
+                );
 
-        produtos.add(
+        Produto arroz =
                 new Alimento(
                         "Arroz 5kg",
                         29.90,
                         5.0,
                         false
-                )
-        );
+                );
+
+        // TESTE 3
+        // MÉTODO ABSTRATO IMPLEMENTADO
 
         System.out.println(
-                "--- 🚚 RELATÓRIO DE FRETE ---"
+                "Categorias:"
         );
 
-        // POLIMORFISMO
+        notebook.exibirCategoria();
+
+        arroz.exibirCategoria();
+
+        System.out.println();
+
+        System.out.println(
+                "=== POLIMORFISMO COM ABSTRACT ==="
+        );
+
+        Produto[] produtos =
+                new Produto[] {
+
+                        new Eletronico(
+                                "Smartphone",
+                                2500.0,
+                                0.8,
+                                12
+                        ),
+
+                        new Alimento(
+                                "Feijão 1kg",
+                                8.50,
+                                1.0,
+                                true
+                        ),
+
+                        new Eletronico(
+                                "Monitor Gamer",
+                                1800.0,
+                                4.5,
+                                24
+                        )
+                };
 
         for (Produto produto : produtos) {
 
-            System.out.println(
-                    "\nProduto: "
-                            + produto.getNome()
-            );
-
-            // O JAVA DECIDE QUAL MÉTODO USAR
+            produto.exibirCategoria();
 
             System.out.println(
                     produto.calcularFrete()
             );
 
             System.out.println(
-                    "-------------------------"
+                    "---"
             );
         }
     }

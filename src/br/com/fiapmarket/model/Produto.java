@@ -1,12 +1,14 @@
 package br.com.fiapmarket.model;
 
-public class Produto {
+// CLASSE ABSTRATA
+public abstract class Produto {
 
     private String nome;
     private double preco;
     private double peso;
 
     // CONSTRUTOR
+
     public Produto(
             String nome,
             double preco,
@@ -32,18 +34,34 @@ public class Produto {
         return this.peso;
     }
 
-    // MÉTODO POLIMÓRFICO (CONTRATO)
+    // MÉTODO CONCRETO
 
-    public String calcularFrete() {
+    public void exibirInformacoes() {
 
-        return "Frete não definido para produto genérico.";
+        System.out.println(
+                "Produto: " + this.nome
+        );
+
+        System.out.println(
+                "Preço: R$ " + this.preco
+        );
     }
+
+    // MÉTODO ABSTRATO
+    // OBRIGA AS FILHAS A IMPLEMENTAREM
+
+    public abstract void exibirCategoria();
+
+    // MÉTODO POLIMÓRFICO
+
+    public abstract String calcularFrete();
 
     // SETTERS PRIVADOS
 
     private void setNome(String nome) {
 
-        if (nome != null && !nome.trim().isEmpty()) {
+        if (nome != null
+                && !nome.trim().isEmpty()) {
 
             this.nome = nome;
 

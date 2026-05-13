@@ -17,7 +17,19 @@ public class Alimento extends Produto {
     }
 
     public boolean isPerecivel() {
+
         return this.perecivel;
+    }
+
+    // IMPLEMENTAÇÃO OBRIGATÓRIA
+
+    @Override
+
+    public void exibirCategoria() {
+
+        System.out.println(
+                "Categoria: Alimento"
+        );
     }
 
     // POLIMORFISMO
