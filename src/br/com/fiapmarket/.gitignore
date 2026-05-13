@@ -1,0 +1,14 @@
+# Arquivos compilados Java
+*.class
+
+# Pasta build
+bin/
+out/
+build/
+
+# Configurações VS Code
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
